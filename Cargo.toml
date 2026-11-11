@@ -1,0 +1,19 @@
+[package]
+name = "drop"
+version = "0.1.0"
+edition = "2021"
+description = "Tiny self-hosted clipboard and file drop for your private network. In-memory only."
+publish = false
+
+[dependencies]
+axum = { version = "0.8", features = ["multipart"] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "time", "net"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+qrcode = { version = "0.14", default-features = false, features = ["svg"] }
+rand = "0.9"
+
+[profile.release]
+opt-level = "s"
+lto = true
+strip = true
